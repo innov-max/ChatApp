@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".Activity.Verification">
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/user"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="OTP Verification"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#0ECC16"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="We will send you an "
+            android:textSize="16sp"
+
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:layout_marginRight="6dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" One Time Password"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="on this mobile Number..."
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textStyle="normal"
+        android:layout_marginRight="6dp"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="8dp"
+        app:cardMaxElevation="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@color/white"
+            android:layout_gravity="center"
+            android:padding="15dp"
+            android:layout_margin="15dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:ems="1"
+                android:inputType="phone"
+                android:textSize="20sp"
+                android:textStyle="bold|normal"
+                android:textColor="@color/black"
+                android:id="@+id/editNumber"
+                android:hint="Enter your Phone Number"
+                android:background="@drawable/background_shape"
+                android:layout_marginBottom="15dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/continueBtn"
+                android:text="Continue"
+                android:textStyle="bold|normal"
+                android:textSize="17sp"
+                android:textAllCaps="false"
+                app:backgroundTint="#027E07"/>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+</LinearLayout>
