@@ -2,6 +2,7 @@ package com.innov.chatapp.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.innov.chatapp.R
 
 class Chat : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

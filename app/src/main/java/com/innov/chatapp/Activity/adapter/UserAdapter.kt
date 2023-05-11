@@ -1,11 +1,13 @@
 package com.innov.chatapp.Activity.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.innov.chatapp.Activity.Chat
 import com.innov.chatapp.Activity.model.User
 import com.innov.chatapp.R
 import com.innov.chatapp.databinding.ItemProfileBinding
@@ -32,6 +34,13 @@ class UserAdapter(var context: Context, var userList:ArrayList<User>):
         Glide.with(context).load(user.profileImage)
             .placeholder(R.drawable.user)
             .into(holder.binding.profile)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context,Chat::class.java)
+            intent.putExtra("name",user.name)
+            intent.putExtra("image",user.profileImage)
+            intent.putExtra("uid",user.uid)
+            context.startActivity(intent)
+        }
     }
     override fun getItemCount(): Int = userList.size
 }
