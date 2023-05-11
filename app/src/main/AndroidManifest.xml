@@ -12,10 +12,10 @@
         android:theme="@style/Theme.ChatApp"
         tools:targetApi="31">
         <activity
-            android:name=".setupProfile"
+            android:name=".Activity.setupProfile"
             android:exported="false" />
         <activity
-            android:name=".OTPActivity"
+            android:name=".Activity.OTPActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.Verification"
