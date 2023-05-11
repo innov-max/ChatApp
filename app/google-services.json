@@ -33,6 +33,43 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:474795790152:android:a5b64ec3ac69f9a3a92d7d",
+        "android_client_info": {
+          "package_name": "com.innov.chatapp.Activity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "474795790152-du7av6qb6q0v3lpmi6p1e4782fhn7qse.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.innov.chatapp.Activity",
+            "certificate_hash": "128ede78a03f228d6e8725741741e773b349368c"
+          }
+        },
+        {
+          "client_id": "474795790152-3eio7lp84geatfqhi47qs6pcalfq3g1k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAht1T4ZNz0lk_ZL3n0Wrq_5LcCaSN9eVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "474795790152-3eio7lp84geatfqhi47qs6pcalfq3g1k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

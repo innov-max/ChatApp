@@ -23,7 +23,7 @@ class Verification : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
         binding!!.editNumber.requestFocus()
         binding!!.continueBtn.setOnClickListener {
             val intent = Intent(this@Verification,OTPActivity::class.java)
