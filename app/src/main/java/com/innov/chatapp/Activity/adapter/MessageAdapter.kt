@@ -14,9 +14,9 @@ import com.innov.chatapp.R
 import com.innov.chatapp.databinding.DeleteLayoutBinding
 import com.innov.chatapp.databinding.SendMsgBinding
 
-class MessageAdapter (
-    var context : Context,
-    messages:ArrayList<Message>?,
+class MessageAdapter(
+    var context: Context,
+    messages: ArrayList<android.os.Message>?,
     senderRoom:String,
     recieverRoom: String
         ):RecyclerView.Adapter<RecyclerView.ViewHolder?>()
@@ -52,18 +52,18 @@ class MessageAdapter (
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val message = messages[position]
         if (holder.javaClass == SentMsgHolder::class.java){
-            val vieHolder = holder as SentMsgHolder
+            val viewHolder = holder as SentMsgHolder
             if (message.message.equals("photo")){
-                vieHolder.binding.image.visibility = View.VISIBLE
-               vieHolder.binding.message.visibility = View.GONE
-                vieHolder.binding.mLinear.visibility = View.GONE
+                viewHolder.binding.image.visibility = View.VISIBLE
+               viewHolder.binding.message.visibility = View.GONE
+                viewHolder.binding.mLinear.visibility = View.GONE
                 Glide.with(context)
                     .load(message.imageUrl)
                     .placeholder(R.drawable.image)
-                    .into(vieHolder.binding.image)
+                    .into(viewHolder.binding.image)
             }
-            vieHolder.binding.message.text = message.message
-            vieHolder.itemView.setOnLongClickListener {
+            viewHolder.binding.message.text = message.message
+            viewHolder.itemView.setOnLongClickListener {
                 val view: View = LayoutInflater.from(context).inflate(R.layout.delete_layout,null)
                 val binding :DeleteLayoutBinding = DeleteLayoutBinding.bind(view)
                 val dialog  = AlertDialog.Builder(context).setTitle("Delete Message")
@@ -105,7 +105,57 @@ class MessageAdapter (
 
         }
         else{
-            val viewHolder = holder as Receiv
+            val viewHolder = holder as RecieveMsgHolder
+            if(message.message.equals("photo")){
+                viewHolder.binding.image.visibility = View.VISIBLE
+                viewHolder.binding.message.visibility = View.GONE
+                viewHolder.binding.mLinear.visibility = View.GONE
+                Glide.with(context)
+                    .load(message.imageUrl)
+                    .placeholder(R.drawable.image)
+                    .into(viewHolder.binding.image)
+
+            }
+            viewHolder.binding.message.text = message.message
+            viewHolder.itemView.setOnLongClickListener {
+                val view: View = LayoutInflater.from(context).inflate(R.layout.delete_layout, null)
+                val binding: DeleteLayoutBinding = DeleteLayoutBinding.bind(view)
+                val dialog = AlertDialog.Builder(context).setTitle("Delete Message")
+                    .setView(binding.root)
+                    .create()
+                binding.everyone.setOnClickListener {
+                    message.message = "This message is removed"
+                    message.messageId?.let { it1 ->
+                        FirebaseDatabase.getInstance().reference.child("chats")
+                            .child(senderRoom)
+                            .child("message")
+                            .child(it1).setValue(message)
+
+                    }
+                    message.messageId.let { it1 ->
+                        FirebaseDatabase.getInstance().reference.child("chats")
+                            .child(recieverRoom)
+                            .child("message")
+                            .child(it1!!).setValue(message)
+
+                    }
+                    dialog.dismiss()
+                }
+                binding.delete.setOnClickListener {
+                    message.messageId?.let { it1 ->
+                        FirebaseDatabase.getInstance().reference.child("chats")
+                            .child(senderRoom)
+                            .child("message")
+                            .child(it1).setValue(null)
+
+                    }
+                    dialog.dismiss()
+
+                }
+                binding.cancel.setOnClickListener { dialog.dismiss() }
+                dialog.show()
+                false
+            }
 
         }
     }

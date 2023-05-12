@@ -17,7 +17,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <ImageView
-                android:id="@+id/imageView"
+                android:layout_marginStart=""
+                android:id="@+id/imageView2"
                 android:src="@drawable/ic_back"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
@@ -70,6 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="visible"/>
