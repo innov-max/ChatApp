@@ -20,7 +20,7 @@ import com.innov.chatapp.databinding.ActivityChatBinding
 class Chat : AppCompatActivity() {
     var binding :ActivityChatBinding? = null
     var adapter : MessageAdapter? = null
-    var message : ArrayList<Message>? = null
+    var messages : ArrayList<Message>? = null
     var senderRoom: String? = null
     var recieverRoom: String? = null
     var database :FirebaseDatabase?= null
@@ -42,7 +42,7 @@ class Chat : AppCompatActivity() {
         dialog = ProgressDialog(this@Chat)
         dialog!!.setMessage("Uploading Image...")
         dialog!!.setCancelable(false)
-        message = ArrayList()
+        messages = ArrayList()
         val name = intent.getStringExtra("name")
         val profile = intent.getStringExtra("image")
         binding!!.name.text = name
@@ -76,7 +76,7 @@ class Chat : AppCompatActivity() {
             })
         senderRoom = senderUid +recieverUid
         recieverRoom = recieverUid + senderUid
-        adapter = MessageAdapter(this@Chat,message,senderRoom!!,recieverRoom!!)
+        adapter = MessageAdapter(this@Chat, messages,senderRoom!!,recieverRoom!!)
         binding!!.recyclerView.layoutManager = LinearLayoutManager(this@Chat)
         binding!!.recyclerView.adapter = adapter
         database!!.reference.child("chats")
@@ -84,10 +84,11 @@ class Chat : AppCompatActivity() {
             .child("message")
             .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    message!!.clear()
+                    messages!!.clear()
                     for (snapShot1 in snapshot.children){
                        val message :Message?= snapShot1.getValue(Message::class.java)
-                        message.messageId
+                        message!!.messageId = snapShot1.key
+                        messages!!.add(messages)
 
                     }
 

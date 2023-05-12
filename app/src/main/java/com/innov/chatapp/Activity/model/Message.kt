@@ -9,6 +9,7 @@ class Message {
     var imageUrl : String? = null
     constructor(){}
     constructor(
+        messageId : String,
         message: String?,
         senderId : String?,
         timeStamp : Long
@@ -16,5 +17,6 @@ class Message {
         this.message = message
         this.senderId = senderId
         this.timeStamp = timeStamp
+        this.messageId = messageId
     }
 }
