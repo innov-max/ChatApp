@@ -14,9 +14,10 @@ import com.innov.chatapp.R
 import com.innov.chatapp.databinding.DeleteLayoutBinding
 import com.innov.chatapp.databinding.SendMsgBinding
 
+
 class MessageAdapter(
     var context: Context,
-    messages: ArrayList<android.os.Message>?,
+    messages: ArrayList<Message>?,
     senderRoom:String,
     recieverRoom: String
         ):RecyclerView.Adapter<RecyclerView.ViewHolder?>()
@@ -26,6 +27,7 @@ class MessageAdapter(
     val ITEM_RICEVE = 2
     var senderRoom:String
     var recieverRoom:String
+    lateinit var messageId:String
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType ==ITEM_SENT){
             val view = LayoutInflater.from(context).inflate(R.layout.send_msg,parent,false)
@@ -168,13 +170,13 @@ inner class SentMsgHolder(itemView: View):RecyclerView.ViewHolder(itemView){
     var binding:SendMsgBinding = SendMsgBinding.bind(itemView)
 }
     init {
-
-            if (messages != null) {
-                this.messages = messages
-            }
+        if (messages != null) {
+            this.messages = messages
+        }
         this.recieverRoom = recieverRoom
         this.senderRoom = senderRoom
-        }
+    }
+
 
 
 

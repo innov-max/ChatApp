@@ -29,6 +29,8 @@ class Chat : AppCompatActivity() {
     var senderUid: String? = null
     var recieverUid: String? = null
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
@@ -81,6 +83,18 @@ class Chat : AppCompatActivity() {
             .child(senderRoom!!)
             .child("message")
             .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    message!!.clear()
+                    for (snapShot1 in snapshot.children){
+                       val message :Message?= snapShot1.getValue(Message::class.java)
+                        message.messageId
+
+                    }
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
 
             })
 
