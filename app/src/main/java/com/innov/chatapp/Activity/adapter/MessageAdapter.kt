@@ -17,12 +17,12 @@ import com.innov.chatapp.databinding.SendMsgBinding
 
 class MessageAdapter(
     var context: Context,
-    messages: ArrayList<android.os.Message>?,
+    messages: ArrayList<Message>?,
     senderRoom:String,
     recieverRoom: String
         ):RecyclerView.Adapter<RecyclerView.ViewHolder?>()
 {
-    lateinit var messages : ArrayList<Message>
+    var messages : ArrayList<Message> = ArrayList()
     val ITEM_SENT =1
     val ITEM_RICEVE = 2
     var senderRoom:String
@@ -40,8 +40,8 @@ class MessageAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        val messages = messages[position]
-        return if (FirebaseAuth.getInstance().uid ==messages.senderId){
+        val message = messages[position]
+        return if (FirebaseAuth.getInstance().uid ==message.senderId){
             ITEM_SENT
         }else{
             ITEM_RICEVE
