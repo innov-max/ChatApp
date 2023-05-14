@@ -5,23 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#88845E"
+    android:background="#7E8F69"
     tools:context=".Activity.MainActivity">
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chatify It"
+        android:orientation="horizontal">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/image"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Colaborate"
+        android:layout_marginStart="10dp"
         android:textAlignment="center"
-        android:layout_marginTop="20sp"
-        android:textColor="#1737EA"
+        android:layout_marginTop="10sp"
+        android:textColor="#00BCD4"
         android:textStyle="bold|normal"
         android:textSize="25sp"/>
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Have End To End Encrypted Conversations"
-        android:textAlignment="textStart"
+        android:text="Network of your close professionals"
+        android:textAlignment="center"
         android:layout_marginTop="2dp"
         android:textColor="#212122"
         android:textStyle="bold|normal"

@@ -1,5 +1,6 @@
 package com.innov.chatapp.Activity
 
+import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -89,6 +90,7 @@ class Chat : AppCompatActivity() {
             .child(senderRoom!!)
             .child("message")
             .addValueEventListener(object : ValueEventListener{
+                @SuppressLint("NotifyDataSetChanged")
                 override fun onDataChange(snapshot: DataSnapshot) {
                     messages!!.clear()
                     for (snapShot1 in snapshot.children){
@@ -105,6 +107,7 @@ class Chat : AppCompatActivity() {
                 }
 
             })
+
         binding!!.sendBtn.setOnClickListener {
             val messageTxt : String = binding!!. messageBox.text.toString()
             val date = Date()

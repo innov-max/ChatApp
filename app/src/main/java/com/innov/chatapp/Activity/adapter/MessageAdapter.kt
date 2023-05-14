@@ -22,21 +22,21 @@ class MessageAdapter(
     recieverRoom: String
         ):RecyclerView.Adapter<RecyclerView.ViewHolder?>()
 {
-    var messages : ArrayList<Message> = ArrayList()
+    lateinit var messages : ArrayList<Message>
     val ITEM_SENT =1
     val ITEM_RICEVE = 2
     var senderRoom:String
     var recieverRoom:String
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if (viewType ==ITEM_SENT){
-            val view = LayoutInflater.from(context).inflate(R.layout.send_msg,parent,false)
+        return if (viewType == ITEM_SENT) {
+            val view = LayoutInflater.from(context).inflate(R.layout.send_msg, parent, false)
             SentMsgHolder(view)
-        }
-        else{
-            val view = LayoutInflater.from(context).inflate(R.layout.ricieve_msg,parent,false)
+        } else{
+            val view = LayoutInflater.from(context).inflate(R.layout.ricieve_msg, parent, false)
             RecieveMsgHolder(view)
 
         }
+
     }
 
     override fun getItemViewType(position: Int): Int {
